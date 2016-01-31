@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Matching Game</title>
+	<style type="text/css">
+	img { position: absolute;}
+	div { position: absolute;}
+	#rightside { 	height: 500px;	left: 50%;
+					border-left: 1px solid black;
+			   }
+	</style>
+</head>
+<body onload="generateFaces()">
+	<h1>Matching Game</h1>
+	<p>Click on the extra smiling face on the left</p>
+
+	<div id="leftside"></div>
+	<div id="rightside"></div>
+<script type="text/javascript">
+		var numberOfFaces = 5;
+		var theLeftSide = document.getElementById("leftside");
+		var theRightSide = document.getElementById("rightside");
+		function random_num_generator(limit)
+		{
+			var random_number;
+			random_number = Math.random()*limit;
+			random_number = Math.floor( random_number);
+			return random_number;
+		}
+		function generateFaces()
+		{
+			for(i=0;i<numberOfFaces;i++)
+			{
+				var element = document.createElement("img");
+				element.src="smile.png";
+				element.style.width = '100px';
+				element.style.height = '100px';
+				element.style.left = random_num_generator(650) + "px"; // width of div element is upto 50%
+				element.style.top = random_num_generator(400) + "px";
+				theLeftSide.appendChild(element);
+			}
+			var leftImages = theLeftSide.cloneNode(true);
+			leftImages.removeChild(leftImages.lastChild);
+			theRightSide.appendChild(leftImages);
+		}
+
+	</script>
+</body>
+</html>
